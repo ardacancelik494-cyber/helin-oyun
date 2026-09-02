@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Helin'e Özel 💗</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(135deg,#ffd9e9,#ded8ff);min-height:100vh;color:#302638}
+.app{max-width:500px;margin:auto;min-height:100vh;padding:18px 14px 40px}.card{background:#ffffffdd;border-radius:28px;padding:24px;box-shadow:0 15px 45px #7b547033;text-align:center;min-height:70vh;display:flex;flex-direction:column;justify-content:center}.hidden{display:none}
+.top{font-size:12px;letter-spacing:2px;opacity:.65}.title{font-size:31px;font-weight:800;margin:8px 0}.sub{opacity:.72}.progress{height:7px;background:#eee;border-radius:20px;margin-bottom:18px;overflow:hidden}.bar{height:100%;background:#e981b1;width:14%;transition:.3s}.num{font-size:12px;opacity:.55;margin-bottom:8px}.q{font-size:22px;font-weight:800;line-height:1.3;margin:8px 0 18px}
+button{width:100%;border:0;border-radius:17px;padding:15px;margin:7px 0;background:white;color:#302638;font-size:15px;font-weight:700;box-shadow:0 5px 15px #6d50631c;cursor:pointer}.primary{background:#e981b1;color:white}.doll{height:205px;width:180px;position:relative;margin:0 auto 8px}.hair{position:absolute;width:112px;height:145px;background:#623a2b;border-radius:58px 58px 42px 42px;left:34px;top:10px}.face{position:absolute;width:80px;height:100px;background:#f5c5a8;border-radius:48%;left:50px;top:32px;z-index:2}.eye{position:absolute;width:8px;height:8px;background:#32262b;border-radius:50%;top:70px;z-index:3}.e1{left:69px}.e2{left:103px}.mouth{position:absolute;width:22px;height:10px;border-bottom:3px solid #a94f68;border-radius:50%;left:79px;top:91px;z-index:3}.body{position:absolute;width:90px;height:80px;background:#d879aa;border-radius:32px 32px 12px 12px;left:45px;top:121px}.spark{position:absolute;font-size:23px;animation:f 2s infinite ease-in-out}.s1{left:4px;top:45px}.s2{right:2px;top:65px}@keyframes f{50%{transform:translateY(-8px)}}.final{background:#fff8fc;border-radius:20px;padding:20px;text-align:left;line-height:1.65;font-size:17px}.music{position:fixed;right:14px;bottom:14px;width:auto;padding:11px 14px;border-radius:999px;z-index:5}
+</style>
+</head>
+<body><div class="app">
+<button class="music" onclick="window.open('https://www.youtube.com/results?search_query=Yal%C4%B1n+Son+A%C5%9Fk%C4%B1m','_blank')">♫ Son Aşkım'ı Aç</button>
+
+<section class="card" id="start">
+<div class="top">HELİN'E ÖZEL</div><div class="title">💗 Gönül Alma Görevi</div>
+<p class="sub">Arda'nın dün geceki hatasını telafi etme simülasyonu.</p>
+<div class="doll"><span class="spark s1">✦</span><span class="spark s2">♡</span><div class="hair"></div><div class="face"></div><div class="eye e1"></div><div class="eye e2"></div><div class="mouth"></div><div class="body"></div></div>
+<button class="primary" onclick="startGame()">BAŞLAYALIM 💗</button>
+</section>
+
+<section class="card hidden" id="game"><div class="progress"><div class="bar" id="bar"></div></div><div class="num" id="num"></div><div class="q" id="q"></div><div id="answers"></div></section>
+
+<section class="card hidden" id="finish">
+<div class="top">❤️ SON</div>
+<div class="final"><b>Bir daha sana “uyuyacağım, gözlerim gidiyor” deyip seni öyle bırakmayacağım.</b> Seni bekletmek ya da kendini değersiz hissettirmek hiç istemedim.<br><br>Dün için gerçekten özür dilerim Helin. <b>Seni üzmek hiç istemedim.</b> ❤️</div>
+</section>
+</div>
+<script>
+const qs=[
+["Dün kim biraz maldı?",["Arda","Yine Arda","Bu soruya cevap vermek için zaten buradayız"]],
+["Dünkü olayda kim haksızdı?",["Helin haklı, Arda haksız","Arda haksız, Helin haklı","Tabii ki de iki şık da 😭"]],
+["Arda şu an ne yapmalı?",["“Ben de haklıydım” diye savunmaya geçmeli","Hiçbir şey olmamış gibi konu değiştirmeli","Adam gibi özür dileyip gönlünü almalı ❤️"]],
+["Helin’in gönlü nasıl alınır?",["İki güzel söz söyleyip geçerek","Özür dileyip konuyu kapatarak","Güzelliğine bakıp yine nasıl bu kadar güzel olabildiğini düşünerek… sonra da seni kırdığı için sarılıp özür dilemek. ❤️"]],
+["Helin'in en büyük suçu nedir?",["Arda'nın aklını gereksiz yere başından almak","Bu kadar tatlı olmak","Güzel olup bir de bunun farkında olmamak 😭"]],
+["Arda'nın Helin konusunda en büyük problemi nedir?",["Fazla güzel olması","Fazla tatlı olması","İkisinin birden aklını başından alması"]]
+];let i=0;
+function startGame(){start.classList.add("hidden");game.classList.remove("hidden");show()}
+function show(){num.textContent=`SORU ${i+1} / ${qs.length}`;bar.style.width=(((i+1)/qs.length)*100)+"%";q.textContent=qs[i][0];answers.innerHTML="";qs[i][1].forEach(x=>{let b=document.createElement("button");b.textContent=x;b.onclick=()=>{b.classList.add("primary");[...document.querySelectorAll("#answers button")].forEach(z=>z.disabled=true);setTimeout(()=>{i++;if(i<qs.length)show();else{game.classList.add("hidden");finish.classList.remove("hidden")}},450)};answers.appendChild(b)})}
+</script></body></html>
